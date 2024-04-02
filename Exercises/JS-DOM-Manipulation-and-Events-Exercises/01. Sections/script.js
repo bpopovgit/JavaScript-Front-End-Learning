@@ -26,6 +26,6 @@ function create(words) {
 
    // Append all to DOM
 
-   // contentElement.append(...divElements);
-   divElements.forEach(divElement => contentElement.appendChild(divElement));
+   // contentElement.append(...divElements); // Doesn't work in Judge
+   divElements.forEach(divElement => contentElement.appendChild(divElement)); // Not efficient
 }
