@@ -125,7 +125,7 @@ editButtonElement.addEventListener('click', async () => {
     // clear input fields
     clearInputData();
 })
-
+http://localhost:3030/jsonstore/games
 addButtonElement.addEventListener('click', async () => {
     // Get input data
     const newMeal = getInputData();

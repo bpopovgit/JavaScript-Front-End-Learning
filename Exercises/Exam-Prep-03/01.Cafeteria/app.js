@@ -1,9 +1,8 @@
 function solve(input) {
-    const baristaCount = Number(input.shift());
+    const baristas = Number(input.shift());
     const team = {};
 
-    // Prepare Baristas team
-    for (let i = 0; i < baristaCount; i++) {
+    for (i = 0; i < baristas; i++) {
         const [name, shift, coffeeTypes] = input[i].split(' ');
 
         team[name] = {
@@ -11,7 +10,7 @@ function solve(input) {
             coffeeTypes: coffeeTypes.split(','),
         }
     }
-    // Execute commands
+
     let commandLine = input.shift();
     while (commandLine != 'Closed') {
         const [command, name, firstArg, secondArg] = commandLine.split(' / ');
@@ -22,9 +21,9 @@ function solve(input) {
             case 'Prepare':
                 shift = firstArg;
                 coffeeType = secondArg;
-
+                
                 if (barista.shift === shift && barista.coffeeTypes.includes(coffeeType)) {
-                    console.log(`${name} has prepared a ${secondArg} for you!`)
+                    console.log(`${name} has prepared a ${coffeeType} for you!`)
                 } else {
                     console.log(`${name} is not available to prepare a ${coffeeType}.`);
                 }
@@ -37,24 +36,30 @@ function solve(input) {
             case 'Learn':
                 coffeeType = firstArg;
                 if (barista.coffeeTypes.includes(coffeeType)) {
-                    console.log(`${name} knows how to make ${coffeeType}.`)
+                    console.log(`${name} knows how to make ${coffeeType}.`);
                 } else {
                     barista.coffeeTypes.push(coffeeType);
                     console.log(`${name} has learned a new coffee type: ${coffeeType}.`)
                 }
-
                 break;
         }
 
         commandLine = input.shift();
     }
 
+
     for (const baristaName in team) {
-        console.log(`Barista: ${baristaName}, Shift: ${team[baristaName].shift}, Drinks: ${team[baristaName].coffeeTypes.join(', ')}`)
-        
+        console.log(`Barista: ${baristaName}, Shift: ${team[baristaName].shift}, Drinks: ${team[baristaName].coffeeTypes.join(',')}`)
     }
 
+
+
+
+
+
 }
+
+
 
 solve([
     '3',
